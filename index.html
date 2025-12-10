@@ -9,30 +9,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* =========================================
-           CSS Variables & Base Styles (スタイリッシュな配色へ刷新)
+           CSS Variables & Base Styles
         ========================================= */
         :root {
             --color-bg: #ffffff;
-            --color-bg-secondary: #f5f7fa; /* より洗練されたクールなグレー */
-            --color-text: #333333;
+            --color-bg-secondary: #f5f7fa;
+            /* 基本文字色を少し柔らかい黒に変更 */
+            --color-text: #222222;
             --color-text-muted: #777777;
-            /* アクセントカラーを深みと知性のあるロイヤルブルー系に変更 */
+            /* アクセントカラー（ロイヤルブルー系） */
             --color-accent: #0056b3;
-            --color-accent-light: #e6f0ff; /* アクセントの薄い色 */
-            /* CTAはグラデーションでリッチに */
+            --color-accent-light: #e6f0ff;
+            /* CTAグラデーション */
             --color-cta-bg-start: #0056b3;
             --color-cta-bg-end: #004494;
             --color-cta-text: #ffffff;
             
-            /* フォントスタックの再定義 */
+            /* フォントスタック */
             --font-en: 'Montserrat', sans-serif;
             --font-jp: 'Noto Sans JP', "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
             
-            --section-padding-pc: 120px 20px; /* 余白を広げて高級感を出す */
+            --section-padding-pc: 120px 20px;
             --section-padding-sp: 80px 20px;
-            --border-radius: 16px; /* 角丸を少し強めてモダンに */
+            --border-radius: 16px;
             
-            /* より洗練された拡散するシャドウ */
+            /* シャドウ */
             --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
             --shadow-hover: 0 20px 40px rgba(0, 86, 179, 0.15);
         }
@@ -54,7 +55,7 @@
             line-height: 1.8;
             background-color: var(--color-bg);
             -webkit-font-smoothing: antialiased;
-            /* 全体に微細なドットパターンを敷いて質感す */
+            /* 微細なドットパターン */
             background-image: radial-gradient(var(--color-bg-secondary) 1px, transparent 1px);
             background-size: 20px 20px;
         }
@@ -65,10 +66,9 @@
             font-weight: 700;
             letter-spacing: 0.05em;
             line-height: 1.4;
-            color: #111;
+            color: var(--color-text);
         }
 
-        /* 英数字を含む見出しはフォントを変更 */
         .en-title {
             font-family: var(--font-en);
         }
@@ -82,22 +82,19 @@
             flex-direction: column;
             align-items: center;
         }
-        /* スタイリッシュな見出し装飾（短いラインとドット） */
+        /* 見出し装飾 */
         h2::after {
             content: '';
             display: block;
-            width: 40px;
-            height: 4px;
+            width: 40px; height: 4px;
             background: var(--color-accent);
             margin-top: 20px;
             border-radius: 2px;
-            position: relative;
         }
         h2::before {
             content: '';
             display: block;
-            width: 8px;
-            height: 8px;
+            width: 8px; height: 8px;
             background: var(--color-accent);
             border-radius: 50%;
             margin-bottom: 10px;
@@ -114,7 +111,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            position: relative; /*装飾配置用*/
+            position: relative;
         }
 
         .section {
@@ -122,27 +119,23 @@
             position: relative;
         }
         
-        /* セクションの背景に斜めのライン装飾を追加 */
+        /* セクション背景装飾 */
         .section-decoration::before {
             content: '';
             position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 40%;
-            height: 120%;
+            top: -10%; left: -10%;
+            width: 40%; height: 120%;
             background: linear-gradient(120deg, transparent 40%, rgba(0, 86, 179, 0.03) 40.5%, rgba(0, 86, 179, 0.03) 60%, transparent 60.5%);
             z-index: -1;
             pointer-events: none;
         }
         .section-decoration.alt::before {
-            left: auto;
-            right: -10%;
+            left: auto; right: -10%;
             transform: scaleX(-1);
         }
 
-
         .text-center { text-align: center; }
-        .text-bold { font-weight: bold; }
+        .text-bold { font-weight: 700; }
         .text-accent { color: var(--color-accent); }
         .sp-only { display: block; }
         .pc-only { display: none; }
@@ -157,7 +150,6 @@
             font-weight: bold;
             text-align: center;
             text-decoration: none;
-            /* グラデーション背景 */
             background: linear-gradient(135deg, var(--color-cta-bg-start), var(--color-cta-bg-end));
             color: var(--color-cta-text);
             border-radius: 50px;
@@ -167,19 +159,16 @@
             position: relative;
             overflow: hidden;
         }
-        /* ボタンのキラッと光るエフェクト */
+        /* ボタンのエフェクト */
         .btn-cta::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
             background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
             transform: rotate(45deg) translate(-100%, -100%);
             transition: all 0.6s ease;
         }
-
         .btn-cta:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0, 86, 179, 0.4);
@@ -225,17 +214,39 @@
             width: 100%;
             position: relative;
             z-index: 1;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1); /* 画像自体に影をつけて浮かせる */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
         }
         .hero-image {
             width: 100%;
             height: auto;
             display: block;
-            /* 画像の下部を少し斜めにカットするデザイン（オプション）
-            clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); */
         }
+        /* ヒーローエリアのバッジ（修正箇所） */
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+        .badge {
+            /* 背景を青のグラデーションに変更 */
+            background: linear-gradient(135deg, var(--color-accent), var(--color-cta-bg-end));
+            /* 文字色を白に変更 */
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
+            letter-spacing: 0.05em;
+        }
+
         .hero-cta-wrapper {
-            margin-top: 60px;
+            margin-top: 40px;
             padding: 0 20px;
             position: relative;
             z-index: 2;
@@ -244,7 +255,7 @@
         /* Problem Section */
         #problem { 
             background-color: var(--color-bg-secondary);
-            /* 背景に幾何学パターンを追加 */
+            /* 幾何学パターン背景 */
             background-image: 
                 linear-gradient(45deg, #f0f2f5 25%, transparent 25%, transparent 75%, #f0f2f5 75%, #f0f2f5),
                 linear-gradient(45deg, #f0f2f5 25%, transparent 25%, transparent 75%, #f0f2f5 75%, #f0f2f5);
@@ -265,12 +276,11 @@
             display: flex;
             align-items: center;
             font-weight: bold;
-            border: none; /* ボーダーをなくし影で表現 */
+            border: none;
             position: relative;
             overflow: hidden;
             transition: transform 0.3s ease;
         }
-        /* カードの左端にアクセントカラーのライン */
         .problem-card::after {
             content: '';
             position: absolute;
@@ -281,46 +291,50 @@
         .problem-card:hover {
              transform: translateX(5px);
         }
-
         .problem-card::before {
             content: '';
             display: inline-block;
-            width: 32px; height: 32px; /* アイコンを大きく */
+            width: 32px; height: 32px;
             margin-right: 20px;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%230056b3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
             background-size: contain;
             flex-shrink: 0;
-            background-color: var(--color-accent-light); /* アイコン背景 */
+            background-color: var(--color-accent-light);
             border-radius: 50%;
             padding: 5px;
         }
+        /* 解決ボックス（修正箇所） */
         .solution-box {
             text-align: center;
             font-size: 1.5rem;
             font-weight: 900;
             padding: 50px 40px;
-            background: #fff;
-            /* ボーダーではなく、グラデーションの枠線を表現 */
-            background-clip: padding-box;
-            border: solid 3px transparent;
-            position: relative;
-            z-index: 1;
+            /* 背景を青のグラデーションに変更 */
+            background: linear-gradient(135deg, var(--color-accent), var(--color-cta-bg-end));
+            /* 文字色を白に変更 */
+            color: #fff;
             border-radius: var(--border-radius);
             max-width: 950px;
             margin: 0 auto;
-            box-shadow: var(--shadow-soft);
-            color: var(--color-accent);
+            /* 影を調整 */
+            box-shadow: 0 15px 40px rgba(0, 86, 179, 0.4);
             letter-spacing: 0.05em;
+            position: relative;
+            overflow: hidden;
         }
-        /* グラデーションボーダーの実現 */
+        /* ボックス内の装飾 */
         .solution-box::before {
             content: '';
             position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            z-index: -1;
-            margin: -3px;
-            border-radius: inherit;
-            background: linear-gradient(to right, var(--color-accent), #00c6ff);
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .solution-box span {
+            position: relative;
+            z-index: 1;
         }
 
         /* Portfolio Section */
@@ -329,8 +343,8 @@
             font-size: 1.8rem;
             text-align: center;
             margin-bottom: 50px;
-            color: #222;
-            font-family: var(--font-en); /* カテゴリ名は英語フォントでスタイリッシュに */
+            color: var(--color-text);
+            font-family: var(--font-en);
             font-weight: 900;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -363,7 +377,6 @@
             display: block;
             transition: transform 0.5s ease;
         }
-        /* ホバー時に画像を少しズーム */
         .portfolio-item:hover img {
             transform: scale(1.08);
         }
@@ -376,24 +389,21 @@
         }
         .portfolio-caption strong {
             display: block;
-            color: #222; /* タイトルは黒で引き締める */
+            color: var(--color-text);
             margin-bottom: 10px;
             font-size: 1.15rem;
             font-weight: 700;
         }
-        /* キャプションにアクセントの短い線を追加 */
         .portfolio-caption::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 25px;
-            width: 30px;
-            height: 3px;
+            bottom: 0; left: 25px;
+            width: 30px; height: 3px;
             background: var(--color-accent);
             transition: width 0.3s ease;
         }
         .portfolio-item:hover .portfolio-caption::after {
-            width: 60px; /* ホバー時に線が伸びる */
+            width: 60px;
         }
 
         /* Advantage Section */
@@ -406,18 +416,17 @@
             background: #fff;
             padding: 50px 35px 40px;
             border-radius: var(--border-radius);
-            text-align: left; /* 左寄せに変更して落ち着きを出す */
+            text-align: left;
             box-shadow: var(--shadow-soft);
             position: relative;
             overflow: hidden;
             border: none;
             z-index: 1;
         }
-        /* 背景に巨大な数字を配置 */
+        /* 背景の数字 */
         .advantage-num-bg {
             position: absolute;
-            top: -30px;
-            right: -20px;
+            top: -30px; right: -20px;
             font-family: var(--font-en);
             font-size: 12rem;
             font-weight: 900;
@@ -430,11 +439,10 @@
         .advantage-card h3 {
             font-size: 1.5rem;
             margin-bottom: 25px;
-            color: #222;
+            color: var(--color-text);
             display: flex;
             align-items: center;
         }
-        /* 見出しの前に小さなアクセント */
         .advantage-card h3::before {
              content: '';
              display: block;
@@ -467,17 +475,17 @@
             border-bottom: 1px solid #f0f0f0;
         }
         .price-table th {
-            background: #fff; /* ヘッダー背景を白に */
-            color: var(--color-accent); /* 文字色を青に */
+            background: #fff;
+            color: var(--color-accent);
             font-weight: 900;
             padding: 35px 25px;
             font-size: 1.2rem;
-            border-bottom: 3px solid var(--color-accent); /* 下線を強調 */
+            border-bottom: 3px solid var(--color-accent);
             font-family: var(--font-en);
         }
         .price-table th:first-child {
             text-align: left;
-            color: #222;
+            color: var(--color-text);
             border-bottom: 3px solid #eee;
         }
         .price-highlight {
@@ -495,7 +503,7 @@
             font-weight: normal;
             font-family: var(--font-jp);
         }
-        .text-bold { font-weight: 700; color: #222; }
+        .text-bold { font-weight: 700; color: var(--color-text); }
 
         /* Flow Section */
         #flow { background-color: var(--color-bg-secondary); }
@@ -507,14 +515,13 @@
             counter-reset: flow-counter;
             position: relative;
         }
-        /* ステップをつなぐ線（PCのみ） */
+        /* PCのみの接続線 */
         @media (min-width: 768px) {
             .flow-steps::before {
                 content: '';
                 position: absolute;
-                top: 50px; /* 円の中心の高さに合わせる */
-                left: 50px;
-                right: 50px;
+                top: 50px;
+                left: 50px; right: 50px;
                 height: 3px;
                 background: #e0e0e0;
                 z-index: 0;
@@ -523,7 +530,7 @@
 
         .flow-step {
             background: #fff;
-            padding: 40px 30px 40px 100px; /* 左側の余白を調整 */
+            padding: 40px 30px 40px 100px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-soft);
             position: relative;
@@ -532,7 +539,7 @@
         }
         .flow-step::before {
             counter-increment: flow-counter;
-            content: counter(flow-counter, decimal-leading-zero); /* 01, 02形式に */
+            content: counter(flow-counter, decimal-leading-zero);
             position: absolute;
             left: 30px; top: 40px;
             width: 50px; height: 50px;
@@ -543,14 +550,13 @@
             font-family: var(--font-en);
             font-size: 1.4rem; font-weight: 900;
             box-shadow: 0 5px 15px rgba(0, 86, 179, 0.4);
-            /* 円の外側に白い枠線をつけて線と分離させる */
             box-sizing: content-box;
             border: 5px solid #fff;
         }
         .flow-step h3 {
             margin-bottom: 15px;
             font-size: 1.3rem;
-            color: #222;
+            color: var(--color-text);
         }
         .flow-step p {
             color: var(--color-text-muted);
@@ -581,7 +587,7 @@
             font-size: 1.15rem;
             display: flex;
             align-items: center;
-            color: #222;
+            color: var(--color-text);
         }
         .faq-q-icon {
             display: flex; align-items: center; justify-content: center;
@@ -595,7 +601,7 @@
         }
         .faq-a {
             display: flex; color: var(--color-text); align-items: flex-start;
-            padding-left: 56px; /* Qアイコン分のインデント */
+            padding-left: 56px;
             position: relative;
         }
         .faq-a::before {
@@ -611,13 +617,13 @@
         #closing {
             text-align: center;
             padding: 150px 20px;
-            /* よりリッチな多色グラデーション */
+            /* リッチな多色グラデーション */
             background: linear-gradient(135deg, #004494, #0056b3, #00c6ff);
             color: #fff;
             position: relative;
             overflow: hidden;
         }
-        /* 背景に動的な光の粒子エフェクト（CSSアニメーション） */
+        /* 背景エフェクト */
         #closing::before, #closing::after {
             content: '';
             position: absolute;
@@ -641,7 +647,7 @@
         #closing h2 {
             color: #fff; font-size: 2.6rem; margin-bottom: 40px;
             text-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            display: block; /* 装飾リセット */
+            display: block;
         }
         #closing h2::after, #closing h2::before { display: none; }
         
@@ -658,7 +664,7 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             font-size: 1.1rem;
         }
-        /* クロージングのボタンは白ベースで反転 */
+        /* クロージングのボタン */
         #closing .btn-cta {
             background: #fff;
             color: var(--color-accent);
@@ -672,7 +678,7 @@
 
         /* Footer */
         #footer {
-            background: #222; /* フッターはダークにして引き締める */
+            background: #222; /* ダークなフッター */
             color: #999;
             padding: 80px 20px;
             text-align: center;
@@ -700,7 +706,8 @@
             
             /* Hero Section PC調整 */
             #hero-section { padding-bottom: 100px; }
-            .hero-cta-wrapper { margin-top: 70px; }
+            .hero-cta-wrapper { margin-top: 50px; }
+            .hero-badges { margin-top: 50px; }
 
             .portfolio-grid, .advantage-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -718,14 +725,13 @@
             #flow .flow-steps {
                 grid-template-columns: repeat(4, 1fr);
                 gap: 40px;
-                padding-top: 60px; /* 線と円のスペース確保 */
+                padding-top: 60px;
             }
             .flow-step {
-                padding: 90px 30px 40px; /* 上の余白を増やす */
+                padding: 90px 30px 40px;
                 text-align: center;
             }
             .flow-step::before {
-                /* 円を上部中央に配置 */
                 left: 50%; top: 0;
                 transform: translate(-50%, -50%);
             }
@@ -767,7 +773,7 @@
             }
             .price-highlight { font-size: 1.6rem; }
             
-            /* スマホの見出し調整 */
+            /* スマホ調整 */
              h2 { font-size: 1.8rem; }
              h2::after { width: 30px; height: 3px; }
              
@@ -776,7 +782,6 @@
              .advantage-card { padding: 40px 25px 30px; }
              .advantage-num-bg { font-size: 8rem; top: -20px; right: -10px;}
 
-             /* スマホのフロー調整 */
             .flow-step { padding: 30px 25px 30px 80px; }
             .flow-step::before { left: 20px; top: 35px; width: 44px; height: 44px; font-size: 1.2rem; border-width: 3px;}
         }
@@ -788,8 +793,15 @@
         <div class="hero-image-wrap fade-in-up">
             <img src="image_12.png" alt="AI活用で実現する、圧倒的高品質・短納期デザイン。そのバナー、明日には納品できます。" class="hero-image">
         </div>
-        <div class="container hero-cta-wrapper fade-in-up">
-            <a href="https://forms.gle/gpgrBtM41eMRmQh89" class="btn-cta">今すぐ無料相談・お見積もり</a>
+        <div class="container fade-in-up">
+            <div class="hero-badges">
+                <div class="badge">1枚 10,000円～</div>
+                <div class="badge">最短翌日納品</div>
+                <div class="badge">修正2回まで無料</div>
+            </div>
+            <div class="hero-cta-wrapper">
+                <a href="https://forms.gle/gpgrBtM41eMRmQh89" class="btn-cta">今すぐ無料相談・お見積もり</a>
+            </div>
         </div>
     </header>
 
@@ -803,7 +815,7 @@
                 <div class="problem-card">A/Bテスト用に、いろんなパターンの画像が欲しい。</div>
             </div>
             <div class="solution-box fade-in-up">
-                その悩み、私たちの「AIハイブリッド制作」が解決します。
+                <span>その悩み、私たちの「AIハイブリッド制作」が解決します。</span>
             </div>
         </div>
     </section>
@@ -1042,26 +1054,25 @@
 
     <footer id="footer">
         <div class="container">
-            <img src="image_10.png" alt="いわきユナイト株式会社" class="footer-logo">
+            <img src="image_13.png" alt="いわきユナイト株式会社" class="footer-logo">
             <p class="copyright en-title">© Iwaki Unite Co., Ltd. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // スクロール連動フェードインアニメーション（設定を少し調整）
+        // スクロール連動フェードインアニメーション
         document.addEventListener("DOMContentLoaded", function() {
             const targets = document.querySelectorAll('.fade-in-up');
             
             const options = {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0.2 // 少し多めに見えてから発火
+                threshold: 0.2
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
-                        // 順番に表示させるための遅延
                         setTimeout(() => {
                             entry.target.classList.add('is-visible');
                         }, index * 100); 
@@ -1075,6 +1086,9 @@
             });
         });
     </script>
+
+</body>
+</html>
 
 </body>
 </html>
