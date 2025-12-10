@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI-Design Express | 圧倒的コスパのデザイン革命</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* =========================================
+           CSS Variables & Base Styles (スタイリッシュな配色へ刷新)
+        ========================================= */
+        :root {
+            --color-bg: #ffffff;
+            --color-bg-secondary: #f5f7fa; /* より洗練されたクールなグレー */
+            --color-text: #333333;
+            --color-text-muted: #777777;
+            /* アクセントカラーを深みと知性のあるロイヤルブルー系に変更 */
+            --color-accent: #0056b3;
+            --color-accent-light: #e6f0ff; /* アクセントの薄い色 */
+            /* CTAはグラデーションでリッチに */
+            --color-cta-bg-start: #0056b3;
+            --color-cta-bg-end: #004494;
+            --color-cta-text: #ffffff;
+            
+            /* フォントスタックの再定義 */
+            --font-en: 'Montserrat', sans-serif;
+            --font-jp: 'Noto Sans JP', "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            
+            --section-padding-pc: 120px 20px; /* 余白を広げて高級感を出す */
+            --section-padding-sp: 80px 20px;
+            --border-radius: 16px; /* 角丸を少し強めてモダンに */
+            
+            /* より洗練された拡散するシャドウ */
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 40px rgba(0, 86, 179, 0.15);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-jp);
+            color: var(--color-text);
+            line-height: 1.8;
+            background-color: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+            /* 全体に微細なドットパターンを敷いて質感す */
+            background-image: radial-gradient(var(--color-bg-secondary) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-jp);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            line-height: 1.4;
+            color: #111;
+        }
+
+        /* 英数字を含む見出しはフォントを変更 */
+        .en-title {
+            font-family: var(--font-en);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* スタイリッシュな見出し装飾（短いラインとドット） */
+        h2::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 4px;
+            background: var(--color-accent);
+            margin-top: 20px;
+            border-radius: 2px;
+            position: relative;
+        }
+        h2::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            margin-bottom: 10px;
+            opacity: 0.6;
+        }
+
+        p {
+            margin-bottom: 1.5em;
+        }
+
+        /* Layout & Utilities */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative; /*装飾配置用*/
+        }
+
+        .section {
+            padding: var(--section-padding-sp);
+            position: relative;
+        }
+        
+        /* セクションの背景に斜めのライン装飾を追加 */
+        .section-decoration::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 40%;
+            height: 120%;
+            background: linear-gradient(120deg, transparent 40%, rgba(0, 86, 179, 0.03) 40.5%, rgba(0, 86, 179, 0.03) 60%, transparent 60.5%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .section-decoration.alt::before {
+            left: auto;
+            right: -10%;
+            transform: scaleX(-1);
+        }
+
+
+        .text-center { text-align: center; }
+        .text-bold { font-weight: bold; }
+        .text-accent { color: var(--color-accent); }
+        .sp-only { display: block; }
+        .pc-only { display: none; }
+
+        /* Components */
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 50px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            /* グラデーション背景 */
+            background: linear-gradient(135deg, var(--color-cta-bg-start), var(--color-cta-bg-end));
+            color: var(--color-cta-text);
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0, 86, 179, 0.3);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            min-width: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+        /* ボタンのキラッと光るエフェクト */
+        .btn-cta::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg) translate(-100%, -100%);
+            transition: all 0.6s ease;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 86, 179, 0.4);
+        }
+        .btn-cta:hover::after {
+            transform: rotate(45deg) translate(100%, 100%);
+        }
+
+        /* Animation */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           Sections
+        ========================================= */
+
+        /* Hero Section */
+        #hero-section {
+            padding: 0 0 80px 0;
+            background: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        /* ヒーローエリアの背景装飾 */
+        #hero-section::before {
+             content: '';
+             position: absolute;
+             width: 100%; height: 100%;
+             background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 86, 179, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 86, 179, 0.05) 0%, transparent 50%);
+             z-index: 0;
+        }
+        .hero-image-wrap {
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1); /* 画像自体に影をつけて浮かせる */
+        }
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* 画像の下部を少し斜めにカットするデザイン（オプション）
+            clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); */
+        }
+        .hero-cta-wrapper {
+            margin-top: 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Problem Section */
+        #problem { 
+            background-color: var(--color-bg-secondary);
+            /* 背景に幾何学パターンを追加 */
+            background-image: 
+                linear-gradient(45deg, #f0f2f5 25%, transparent 25%, transparent 75%, #f0f2f5 75%, #f0f2f5),
+                linear-gradient(45deg, #f0f2f5 25%, transparent 25%, transparent 75%, #f0f2f5 75%, #f0f2f5);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+        }
+        .problem-card-list {
+            display: grid;
+            gap: 25px;
+            max-width: 850px;
+            margin: 0 auto 50px;
+        }
+        .problem-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            border: none; /* ボーダーをなくし影で表現 */
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        /* カードの左端にアクセントカラーのライン */
+        .problem-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--color-accent);
+        }
+        .problem-card:hover {
+             transform: translateX(5px);
+        }
+
+        .problem-card::before {
+            content: '';
+            display: inline-block;
+            width: 32px; height: 32px; /* アイコンを大きく */
+            margin-right: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%230056b3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+            background-size: contain;
+            flex-shrink: 0;
+            background-color: var(--color-accent-light); /* アイコン背景 */
+            border-radius: 50%;
+            padding: 5px;
+        }
+        .solution-box {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            padding: 50px 40px;
+            background: #fff;
+            /* ボーダーではなく、グラデーションの枠線を表現 */
+            background-clip: padding-box;
+            border: solid 3px transparent;
+            position: relative;
+            z-index: 1;
+            border-radius: var(--border-radius);
+            max-width: 950px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-soft);
+            color: var(--color-accent);
+            letter-spacing: 0.05em;
+        }
+        /* グラデーションボーダーの実現 */
+        .solution-box::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -1;
+            margin: -3px;
+            border-radius: inherit;
+            background: linear-gradient(to right, var(--color-accent), #00c6ff);
+        }
+
+        /* Portfolio Section */
+        .portfolio-category { margin-bottom: 100px; }
+        .portfolio-category h3 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #222;
+            font-family: var(--font-en); /* カテゴリ名は英語フォントでスタイリッシュに */
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        .portfolio-item {
+            background: #fff;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: none;
+            position: relative;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        .portfolio-img-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        /* ホバー時に画像を少しズーム */
+        .portfolio-item:hover img {
+            transform: scale(1.08);
+        }
+        .portfolio-caption {
+            padding: 25px;
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            background: #fff;
+            position: relative;
+        }
+        .portfolio-caption strong {
+            display: block;
+            color: #222; /* タイトルは黒で引き締める */
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        /* キャプションにアクセントの短い線を追加 */
+        .portfolio-caption::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25px;
+            width: 30px;
+            height: 3px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+        .portfolio-item:hover .portfolio-caption::after {
+            width: 60px; /* ホバー時に線が伸びる */
+        }
+
+        /* Advantage Section */
+        #advantage { background-color: var(--color-bg-secondary); }
+        .advantage-grid {
+            display: grid;
+            gap: 35px;
+        }
+        .advantage-card {
+            background: #fff;
+            padding: 50px 35px 40px;
+            border-radius: var(--border-radius);
+            text-align: left; /* 左寄せに変更して落ち着きを出す */
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            z-index: 1;
+        }
+        /* 背景に巨大な数字を配置 */
+        .advantage-num-bg {
+            position: absolute;
+            top: -30px;
+            right: -20px;
+            font-family: var(--font-en);
+            font-size: 12rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            opacity: 0.07;
+            line-height: 1;
+            z-index: -1;
+        }
+        
+        .advantage-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: #222;
+            display: flex;
+            align-items: center;
+        }
+        /* 見出しの前に小さなアクセント */
+        .advantage-card h3::before {
+             content: '';
+             display: block;
+             width: 6px; height: 24px;
+             background: var(--color-accent);
+             margin-right: 15px;
+             border-radius: 3px;
+        }
+        .advantage-card p {
+            color: var(--color-text-muted);
+        }
+
+        /* Price Section */
+        .price-table-wrap {
+            max-width: 950px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            border: none;
+        }
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .price-table th, .price-table td {
+            padding: 25px;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .price-table th {
+            background: #fff; /* ヘッダー背景を白に */
+            color: var(--color-accent); /* 文字色を青に */
+            font-weight: 900;
+            padding: 35px 25px;
+            font-size: 1.2rem;
+            border-bottom: 3px solid var(--color-accent); /* 下線を強調 */
+            font-family: var(--font-en);
+        }
+        .price-table th:first-child {
+            text-align: left;
+            color: #222;
+            border-bottom: 3px solid #eee;
+        }
+        .price-highlight {
+            font-family: var(--font-en);
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            letter-spacing: -0.02em;
+        }
+        .price-note {
+            font-size: 0.8em;
+            color: #999;
+            display: block;
+            margin-top: 8px;
+            font-weight: normal;
+            font-family: var(--font-jp);
+        }
+        .text-bold { font-weight: 700; color: #222; }
+
+        /* Flow Section */
+        #flow { background-color: var(--color-bg-secondary); }
+        .flow-steps {
+            display: grid;
+            gap: 30px;
+            max-width: 950px;
+            margin: 0 auto;
+            counter-reset: flow-counter;
+            position: relative;
+        }
+        /* ステップをつなぐ線（PCのみ） */
+        @media (min-width: 768px) {
+            .flow-steps::before {
+                content: '';
+                position: absolute;
+                top: 50px; /* 円の中心の高さに合わせる */
+                left: 50px;
+                right: 50px;
+                height: 3px;
+                background: #e0e0e0;
+                z-index: 0;
+            }
+        }
+
+        .flow-step {
+            background: #fff;
+            padding: 40px 30px 40px 100px; /* 左側の余白を調整 */
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            border: none;
+            z-index: 1;
+        }
+        .flow-step::before {
+            counter-increment: flow-counter;
+            content: counter(flow-counter, decimal-leading-zero); /* 01, 02形式に */
+            position: absolute;
+            left: 30px; top: 40px;
+            width: 50px; height: 50px;
+            background: var(--color-accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-en);
+            font-size: 1.4rem; font-weight: 900;
+            box-shadow: 0 5px 15px rgba(0, 86, 179, 0.4);
+            /* 円の外側に白い枠線をつけて線と分離させる */
+            box-sizing: content-box;
+            border: 5px solid #fff;
+        }
+        .flow-step h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            color: #222;
+        }
+        .flow-step p {
+            color: var(--color-text-muted);
+            margin-bottom: 0;
+        }
+
+        /* FAQ Section */
+        .faq-list {
+            max-width: 850px;
+            margin: 0 auto;
+            display: grid;
+            gap: 25px;
+        }
+        .faq-item {
+            background: #fff;
+            padding: 35px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+             box-shadow: var(--shadow-hover);
+        }
+        .faq-q {
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            color: #222;
+        }
+        .faq-q-icon {
+            display: flex; align-items: center; justify-content: center;
+            width: 36px; height: 36px;
+            background: var(--color-accent);
+            color: #fff;
+            border-radius: 50%;
+            margin-right: 20px;
+            font-family: var(--font-en); font-weight: 900;
+            flex-shrink: 0;
+        }
+        .faq-a {
+            display: flex; color: var(--color-text); align-items: flex-start;
+            padding-left: 56px; /* Qアイコン分のインデント */
+            position: relative;
+        }
+        .faq-a::before {
+             content: 'A.';
+             position: absolute;
+             left: 15px; top: 0;
+             color: var(--color-text-muted);
+             font-weight: bold; font-family: var(--font-en);
+             opacity: 0.6;
+        }
+
+        /* Closing Section */
+        #closing {
+            text-align: center;
+            padding: 150px 20px;
+            /* よりリッチな多色グラデーション */
+            background: linear-gradient(135deg, #004494, #0056b3, #00c6ff);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        /* 背景に動的な光の粒子エフェクト（CSSアニメーション） */
+        #closing::before, #closing::after {
+            content: '';
+            position: absolute;
+            width: 600px; height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(rgba(255,255,255,0.1), transparent 60%);
+            animation: float 15s infinite linear;
+            z-index: 0;
+        }
+        #closing::before { top: -20%; left: -20%; }
+        #closing::after { bottom: -30%; right: -10%; animation-delay: -7s; animation-duration: 20s; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(100px, 50px) rotate(180deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        .closing-content { position: relative; z-index: 1; }
+
+        #closing h2 {
+            color: #fff; font-size: 2.6rem; margin-bottom: 40px;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: block; /* 装飾リセット */
+        }
+        #closing h2::after, #closing h2::before { display: none; }
+        
+        #closing p { font-size: 1.3rem; opacity: 0.9; font-weight: 500; margin-bottom: 40px;}
+        
+        .campaign-text {
+            color: var(--color-accent);
+            background: #fff;
+            font-weight: 900;
+            margin-bottom: 40px;
+            display: inline-block;
+            padding: 12px 35px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            font-size: 1.1rem;
+        }
+        /* クロージングのボタンは白ベースで反転 */
+        #closing .btn-cta {
+            background: #fff;
+            color: var(--color-accent);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        #closing .btn-cta::after { background: linear-gradient(to right, transparent, rgba(0, 86, 179, 0.1), transparent); }
+        #closing .btn-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        #footer {
+            background: #222; /* フッターはダークにして引き締める */
+            color: #999;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .footer-logo {
+            max-width: 180px;
+            margin-bottom: 30px;
+            filter: brightness(0) invert(1); /* ロゴを白く反転 */
+            opacity: 0.9;
+        }
+        .copyright {
+            font-size: 0.85rem;
+            font-family: var(--font-en);
+            opacity: 0.7;
+        }
+
+        /* =========================================
+           Media Queries (PC Layout)
+        ========================================= */
+        @media (min-width: 768px) {
+            .section { padding: var(--section-padding-pc); }
+            .sp-only { display: none; }
+            .pc-only { display: inline; }
+            h2 { font-size: 3rem; margin-bottom: 80px; }
+            
+            /* Hero Section PC調整 */
+            #hero-section { padding-bottom: 100px; }
+            .hero-cta-wrapper { margin-top: 70px; }
+
+            .portfolio-grid, .advantage-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .portfolio-grid.col-4 { grid-template-columns: repeat(4, 1fr); }
+
+            /* PCでのテーブル表示リセット */
+            .price-table thead { display: table-header-group; }
+            .price-table tr { display: table-row; margin-bottom: 0; box-shadow: none; border-radius: 0; border: none;}
+            .price-table th, .price-table td { display: table-cell; text-align: center; padding: 30px 25px; border-bottom: 1px solid #f0f0f0; }
+            .price-table td::before { content: none; }
+            .price-table tr:last-child td { border-bottom: none; }
+            .price-table th:first-child, .price-table td:first-child { text-align: left; padding-left: 40px; }
+
+            #flow .flow-steps {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 40px;
+                padding-top: 60px; /* 線と円のスペース確保 */
+            }
+            .flow-step {
+                padding: 90px 30px 40px; /* 上の余白を増やす */
+                text-align: center;
+            }
+            .flow-step::before {
+                /* 円を上部中央に配置 */
+                left: 50%; top: 0;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        /* スマホでのテーブル縦積み表示 */
+        @media (max-width: 767px) {
+            .price-table thead { display: none; }
+            .price-table tr {
+                display: block;
+                margin-bottom: 30px;
+                box-shadow: var(--shadow-soft);
+                border-radius: var(--border-radius);
+                overflow: hidden;
+                background: #fff;
+            }
+            .price-table td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: right;
+                padding: 20px 25px;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            .price-table td:first-child {
+                background: var(--color-accent);
+                color: #fff;
+                font-weight: bold;
+                justify-content: center;
+                font-size: 1.1rem;
+            }
+            .price-table td:last-child { border-bottom: none; }
+            .price-table td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                text-align: left;
+                color: var(--color-text-muted);
+                font-size: 0.9rem;
+            }
+            .price-highlight { font-size: 1.6rem; }
+            
+            /* スマホの見出し調整 */
+             h2 { font-size: 1.8rem; }
+             h2::after { width: 30px; height: 3px; }
+             
+             .solution-box { font-size: 1.2rem; padding: 30px 20px; }
+             
+             .advantage-card { padding: 40px 25px 30px; }
+             .advantage-num-bg { font-size: 8rem; top: -20px; right: -10px;}
+
+             /* スマホのフロー調整 */
+            .flow-step { padding: 30px 25px 30px 80px; }
+            .flow-step::before { left: 20px; top: 35px; width: 44px; height: 44px; font-size: 1.2rem; border-width: 3px;}
+        }
+    </style>
+</head>
+<body>
+
+    <header id="hero-section">
+        <div class="hero-image-wrap fade-in-up">
+            <img src="image_12.png" alt="AI活用で実現する、圧倒的高品質・短納期デザイン。そのバナー、明日には納品できます。" class="hero-image">
+        </div>
+        <div class="container hero-cta-wrapper fade-in-up">
+            <a href="https://forms.gle/gpgrBtM41eMRmQh89" class="btn-cta">今すぐ無料相談・お見積もり</a>
+        </div>
+    </header>
+
+    <section id="problem" class="section section-decoration">
+        <div class="container">
+            <h2 class="fade-in-up">こんなお悩みありませんか？</h2>
+            <div class="problem-card-list fade-in-up">
+                <div class="problem-card">急なキャンペーンで、バナーが今すぐ必要になった。</div>
+                <div class="problem-card">外注費を抑えたいが、安っぽいデザインにはしたくない。</div>
+                <div class="problem-card">デザイナーとのやり取りや、納品待ちの時間がストレス。</div>
+                <div class="problem-card">A/Bテスト用に、いろんなパターンの画像が欲しい。</div>
+            </div>
+            <div class="solution-box fade-in-up">
+                その悩み、私たちの「AIハイブリッド制作」が解決します。
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2 class="fade-in-up">制作実績</h2>
+
+            <div class="portfolio-category fade-in-up">
+                <h3>Food & EC</h3>
+                <div class="portfolio-grid col-4">
+                    <div class="portfolio-item">
+                        <div class="portfolio-img-wrap">
+                            <img src="image_4.png" alt="高級アイスクリーム">
+                        </div>
+                        <div class="portfolio-caption">
+                            <strong>高級スイーツLPメイン</strong>
+                            「シズル感」と「高級感」で価格以上の価値を演出。
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-img-wrap">
+                            <img src="image_8.png" alt="抹茶カヌレ商品PR">
+                        </div>
+                        <div class="portfolio-caption">
+                            <strong>ランキング1位商品PR</strong>
+                            権威性アイコンと断面で「濃厚さ」を強調。
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-img-wrap">
+                            <img src="image_6.png" alt="東北ぷりんセット">
+                        </div>
+                        <div class="portfolio-caption">
+                            <strong>お取り寄せグルメまとめ</strong>
+                            バリエーションと販売実績をひと目で伝達。
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-img-wrap">
+                            <img src="image_5.png" alt="自炊サポート宅食">
+                        </div>
+                        <div class="portfolio-caption">
+                            <strong>宅食サービス利用イメージ</strong>
+                            湯気や柔らかい光でターゲットへの共感を誘う。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-category fade-in-up">
+                <h3>Beauty & Lifestyle</h3>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-img-wrap">
+                            <img src="image_3.png" alt="フィットネスジム広告">
+                        </div>
+                        <div class="portfolio-caption">
+                            <strong>パーソナルジム広告</strong>
+                            スタイリッシュな写真とタイポで意欲を刺激。
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-img-wrap">
+                            <img src="image_0.png" alt="脱毛サロンキャンペーン">
+                        </div>
+                        <div class="portfolio-caption">
+                            <strong>美容サロンキャンペーン</strong>
+                            「今だけ50円」等の強力なオファーを目立たせる。
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-img-wrap">
+                            <img src="image_7.png" alt="健康茶イメージ">
+                        </div>
+                        <div class="portfolio-caption">
+                            <strong>健康食品・飲料イメージ</strong>
+                            爽やかなグリーンで「体に優しい」世界観を構築。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-category fade-in-up">
+                <h3>Business & Service</h3>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-img-wrap">
+                            <img src="image_9.png" alt="適職診断アイキャッチ">
+                        </div>
+                        <div class="portfolio-caption">
+                            <strong>診断コンテンツアイキャッチ</strong>
+                            イラストを使用し、硬いテーマを親しみやすく。
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-img-wrap">
+                            <img src="image_2.png" alt="SNSブランディング講座">
+                        </div>
+                        <div class="portfolio-caption">
+                            <strong>セミナー集客バナー</strong>
+                            ゴールド×黒で「プロフェッショナル」な印象を。
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-img-wrap">
+                            <img src="image_1.png" alt="タスク管理ツール広告">
+                        </div>
+                        <div class="portfolio-caption">
+                            <strong>SaaSツール獲得広告</strong>
+                            強調文字で視認性とインパクトを最大化。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="advantage" class="section section-decoration alt">
+        <div class="container">
+            <h2 class="fade-in-up">選ばれる3つの理由</h2>
+            <p class="text-center fade-in-up" style="margin-bottom: 60px; font-size: 1.1rem;">なぜ「安くて早い」のに「高品質」なのか？</p>
+            <div class="advantage-grid fade-in-up">
+                <div class="advantage-card">
+                    <span class="advantage-num-bg">01</span>
+                    <h3>AIによる<br>超高速ドラフト生成</h3>
+                    <p>最新AIがベースを一瞬で作成。ゼロから作る時間を90%カットし、「最短翌日納品」を実現。</p>
+                </div>
+                <div class="advantage-card">
+                    <span class="advantage-num-bg">02</span>
+                    <h3>人力による<br>丁寧な調整</h3>
+                    <p>AIが苦手な文字レイアウトや細部を専門スタッフが調整。違和感のない、商用利用レベルのデザインに仕上げます。</p>
+                </div>
+                <div class="advantage-card">
+                    <span class="advantage-num-bg">03</span>
+                    <h3>業界最安クラスの<br>料金体系</h3>
+                    <p>工程の自動化で人件費を圧縮。1枚10,000円～という圧倒的なコストパフォーマンスを実現。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="price" class="section">
+        <div class="container">
+            <h2 class="fade-in-up">料金プラン</h2>
+            <div class="price-table-wrap fade-in-up">
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>PLAN</th>
+                            <th>スタンダード（1枚）</th>
+                            <th>ボリュームパック（5枚）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="プラン" class="text-bold">価格</td>
+                            <td data-label="スタンダード（1枚）"><span class="price-highlight">10,000円</span></td>
+                            <td data-label="ボリュームパック（5枚）"><span class="price-highlight">45,000円</span><span class="price-note">(1枚あたり9,000円)</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="プラン" class="text-bold">納期</td>
+                            <td data-label="スタンダード（1枚）">翌日～2営業日</td>
+                            <td data-label="ボリュームパック（5枚）">3営業日～</td>
+                        </tr>
+                        <tr>
+                            <td data-label="プラン" class="text-bold">修正</td>
+                            <td data-label="スタンダード（1枚）">2回まで無料</td>
+                            <td data-label="ボリュームパック（5枚）">各2回まで無料</td>
+                        </tr>
+                        <tr>
+                            <td data-label="プラン" class="text-bold">用途例</td>
+                            <td data-label="スタンダード（1枚）">SNS広告、バナー</td>
+                            <td data-label="ボリュームパック（5枚）">A/Bテスト、複数展開</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-center fade-in-up" style="margin-top: 40px; font-size: 0.9rem; color: var(--color-text-muted);">※複雑な合成やイラスト描き起こしが必要な場合は別途オプションとなります。<br>※月額定額プランもございます。お問い合わせください。</p>
+        </div>
+    </section>
+
+    <section id="flow" class="section section-decoration">
+        <div class="container">
+            <h2 class="fade-in-up">納品までの流れ</h2>
+            <p class="text-center fade-in-up" style="margin-bottom: 60px; font-size: 1.1rem;">面倒な打ち合わせは不要です。</p>
+            <div class="flow-steps fade-in-up">
+                <div class="flow-step">
+                    <h3>オーダーフォーム入力</h3>
+                    <p>サイズ、テキスト、イメージ（参考画像があれば）を送るだけ。</p>
+                </div>
+                <div class="flow-step">
+                    <h3>AIを活用した制作・調整</h3>
+                    <p>最短数時間で初稿をご提出します。</p>
+                </div>
+                <div class="flow-step">
+                    <h3>確認・修正</h3>
+                    <p>気になる点があればチャットで修正依頼。</p>
+                </div>
+                <div class="flow-step">
+                    <h3>納品</h3>
+                    <p>jpg/png形式で納品完了。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section">
+        <div class="container">
+            <h2 class="fade-in-up">よくある質問</h2>
+            <div class="faq-list fade-in-up">
+                <div class="faq-item">
+                    <p class="faq-q"><span class="faq-q-icon">Q</span>AIで作った画像に著作権の問題はありませんか？</p>
+                    <p class="faq-a">商用利用可能な有料AIモデルを使用し、必要な加筆修正・調整を行うため、安心してご使用いただけます。</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q"><span class="faq-q-icon">Q</span>まったくイメージが湧いていないのですが…</p>
+                    <p class="faq-a">お任せください。AIが複数のパターンを提案できるため、そこから選んでブラッシュアップすることも可能です。</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q"><span class="faq-q-icon">Q</span>LP（ランディングページ）全体も作れますか？</p>
+                    <p class="faq-a">はい、ヘッダー画像だけでなく、構成案からの全体制作も承っております（別途お見積り）。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="closing">
+        <div class="closing-content container fade-in-up">
+            <h2>ビジネスのスピードを落とさない、<br>新時代のデザインパートナー。</h2>
+            <p>まずは1枚、そのクオリティとスピードを体験してください。</p>
+            <div class="campaign-text">初回限定お試しキャンペーン中！</div><br>
+            <a href="https://forms.gle/gpgrBtM41eMRmQh89" class="btn-cta">無料見積もり・相談をする</a>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="container">
+            <img src="image_10.png" alt="いわきユナイト株式会社" class="footer-logo">
+            <p class="copyright en-title">© Iwaki Unite Co., Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // スクロール連動フェードインアニメーション（設定を少し調整）
+        document.addEventListener("DOMContentLoaded", function() {
+            const targets = document.querySelectorAll('.fade-in-up');
+            
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2 // 少し多めに見えてから発火
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // 順番に表示させるための遅延
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                        }, index * 100); 
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+
+            targets.forEach(target => {
+                observer.observe(target);
+            });
+        });
+    </script>
+
+</body>
+</html>
