@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AI-Design Express | 圧倒的コスパのデザイン革命</title>
+    <title>AI-Product Studio | 撮影不要の次世代EC画像制作</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
@@ -14,50 +14,35 @@
         :root {
             --color-bg: #ffffff;
             --color-bg-secondary: #f5f7fa;
-            /* 基本文字色を少し柔らかい黒に変更 */
             --color-text: #222222;
-            --color-text-muted: #777777;
-            /* アクセントカラー（ロイヤルブルー系） */
-            --color-accent: #0056b3;
+            --color-text-muted: #666666;
+            --color-accent: #004085; 
             --color-accent-light: #e6f0ff;
-            /* CTAグラデーション */
             --color-cta-bg-start: #0056b3;
-            --color-cta-bg-end: #004494;
+            --color-cta-bg-end: #003d82;
             --color-cta-text: #ffffff;
             
-            /* フォントスタック */
             --font-en: 'Montserrat', sans-serif;
-            --font-jp: 'Noto Sans JP', "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            --font-jp: 'Noto Sans JP', sans-serif;
             
             --section-padding-pc: 120px 20px;
             --section-padding-sp: 80px 20px;
-            --border-radius: 16px;
+            --border-radius: 12px;
             
-            /* シャドウ */
             --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 20px 40px rgba(0, 86, 179, 0.15);
+            --shadow-hover: 0 20px 40px rgba(0, 64, 133, 0.15);
         }
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
-        }
-
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; scroll-behavior: smooth; }
         body {
             font-family: var(--font-jp);
             color: var(--color-text);
             line-height: 1.8;
             background-color: var(--color-bg);
-            -webkit-font-smoothing: antialiased;
-            /* 微細なドットパターン */
             background-image: radial-gradient(var(--color-bg-secondary) 1px, transparent 1px);
             background-size: 20px 20px;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Typography */
@@ -68,721 +53,283 @@
             line-height: 1.4;
             color: var(--color-text);
         }
-
-        .en-title {
-            font-family: var(--font-en);
-        }
+        .en-title { font-family: var(--font-en); }
 
         h2 {
             font-size: 2.2rem;
             text-align: center;
             margin-bottom: 60px;
             position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: flex; flex-direction: column; align-items: center;
         }
-        /* 見出し装飾 */
         h2::after {
-            content: '';
-            display: block;
-            width: 40px; height: 4px;
-            background: var(--color-accent);
-            margin-top: 20px;
-            border-radius: 2px;
-        }
-        h2::before {
-            content: '';
-            display: block;
-            width: 8px; height: 8px;
-            background: var(--color-accent);
-            border-radius: 50%;
-            margin-bottom: 10px;
-            opacity: 0.6;
+            content: ''; display: block; width: 40px; height: 4px;
+            background: var(--color-accent); margin-top: 20px; border-radius: 2px;
         }
 
-        p {
-            margin-bottom: 1.5em;
-        }
+        p { margin-bottom: 1.5em; }
 
-        /* Layout & Utilities */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-        }
-
-        .section {
-            padding: var(--section-padding-sp);
-            position: relative;
-        }
+        /* Layout */
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; }
+        .section { padding: var(--section-padding-sp); position: relative; }
         
-        /* セクション背景装飾 */
         .section-decoration::before {
-            content: '';
-            position: absolute;
-            top: -10%; left: -10%;
+            content: ''; position: absolute; top: -10%; left: -10%;
             width: 40%; height: 120%;
-            background: linear-gradient(120deg, transparent 40%, rgba(0, 86, 179, 0.03) 40.5%, rgba(0, 86, 179, 0.03) 60%, transparent 60.5%);
-            z-index: -1;
-            pointer-events: none;
+            background: linear-gradient(120deg, transparent 40%, rgba(0, 64, 133, 0.03) 40.5%, rgba(0, 64, 133, 0.03) 60%, transparent 60.5%);
+            z-index: -1; pointer-events: none;
         }
-        .section-decoration.alt::before {
-            left: auto; right: -10%;
-            transform: scaleX(-1);
-        }
+        .section-decoration.alt::before { left: auto; right: -10%; transform: scaleX(-1); }
 
         .text-center { text-align: center; }
         .text-bold { font-weight: 700; }
-        .text-accent { color: var(--color-accent); }
         .sp-only { display: block; }
         .pc-only { display: none; }
 
-        /* Components */
+        /* Components: CTA Button */
         .btn-cta {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px 50px;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 20px 50px; font-size: 18px; font-weight: bold;
+            text-align: center; text-decoration: none;
             background: linear-gradient(135deg, var(--color-cta-bg-start), var(--color-cta-bg-end));
             color: var(--color-cta-text);
             border-radius: 50px;
-            box-shadow: 0 10px 25px rgba(0, 86, 179, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 64, 133, 0.3);
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            min-width: 300px;
-            position: relative;
-            overflow: hidden;
+            min-width: 320px; position: relative; overflow: hidden;
         }
-        /* ボタンのエフェクト */
         .btn-cta::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
+            content: ''; position: absolute; top: -50%; left: -50%;
             width: 200%; height: 200%;
             background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
             transform: rotate(45deg) translate(-100%, -100%);
             transition: all 0.6s ease;
         }
-        .btn-cta:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 86, 179, 0.4);
-        }
-        .btn-cta:hover::after {
-            transform: rotate(45deg) translate(100%, 100%);
-        }
+        .btn-cta:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0, 64, 133, 0.4); }
+        .btn-cta:hover::after { transform: rotate(45deg) translate(100%, 100%); }
 
         /* Animation */
         .fade-in-up {
-            opacity: 0;
-            transform: translateY(40px);
+            opacity: 0; transform: translateY(40px);
             transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
         }
-        .fade-in-up.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* =========================================
-           Sections
-        ========================================= */
+        .fade-in-up.is-visible { opacity: 1; transform: translateY(0); }
 
         /* Hero Section */
         #hero-section {
-            padding: 0 0 80px 0;
-            background: #fff;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            padding: 0 0 80px 0; background: #fff; text-align: center;
+            position: relative; overflow: hidden;
         }
-        /* ヒーローエリアの背景装飾 */
-        #hero-section::before {
-             content: '';
-             position: absolute;
-             width: 100%; height: 100%;
-             background: 
-                radial-gradient(circle at 20% 30%, rgba(0, 86, 179, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(0, 86, 179, 0.05) 0%, transparent 50%);
-             z-index: 0;
-        }
-        .hero-image-wrap {
-            width: 100%;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-        }
-        .hero-image {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        /* ヒーローエリアのバッジ（修正箇所） */
+        .hero-image-wrap { width: 100%; position: relative; z-index: 1; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+        .hero-image { width: 100%; height: auto; display: block; }
+        
+        .hero-content { margin-top: 50px; padding: 0 20px; position: relative; z-index: 2; }
+        
         .hero-badges {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 40px;
-            position: relative;
-            z-index: 2;
-            padding: 0 20px;
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 30px;
         }
         .badge {
-            /* 背景を青のグラデーションに変更 */
-            background: linear-gradient(135deg, var(--color-accent), var(--color-cta-bg-end));
-            /* 文字色を白に変更 */
-            color: #fff;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
-            letter-spacing: 0.05em;
+            background: #fff; border: 2px solid var(--color-accent); color: var(--color-accent);
+            padding: 10px 25px; border-radius: 50px; font-size: 1rem; font-weight: 900;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); letter-spacing: 0.05em;
+        }
+        .badge.highlight {
+            background: var(--color-accent); color: #fff; border-color: var(--color-accent);
         }
 
-        .hero-cta-wrapper {
-            margin-top: 40px;
-            padding: 0 20px;
-            position: relative;
-            z-index: 2;
+        .hero-copy-main {
+            font-size: 2.4rem; line-height: 1.3; margin-bottom: 20px; color: #111;
+        }
+        .hero-copy-sub {
+            font-size: 1.1rem; color: var(--color-text-muted); margin-bottom: 40px;
         }
 
         /* Problem Section */
         #problem { 
             background-color: var(--color-bg-secondary);
-            /* 幾何学パターン背景 */
-            background-image: 
-                linear-gradient(45deg, #f0f2f5 25%, transparent 25%, transparent 75%, #f0f2f5 75%, #f0f2f5),
-                linear-gradient(45deg, #f0f2f5 25%, transparent 25%, transparent 75%, #f0f2f5 75%, #f0f2f5);
-            background-size: 60px 60px;
-            background-position: 0 0, 30px 30px;
+            background-image: linear-gradient(45deg, #f0f2f5 25%, transparent 25%, transparent 75%, #f0f2f5 75%, #f0f2f5), linear-gradient(45deg, #f0f2f5 25%, transparent 25%, transparent 75%, #f0f2f5 75%, #f0f2f5);
+            background-size: 60px 60px; background-position: 0 0, 30px 30px;
         }
-        .problem-card-list {
-            display: grid;
-            gap: 25px;
-            max-width: 850px;
-            margin: 0 auto 50px;
-        }
+        .problem-card-list { display: grid; gap: 20px; max-width: 850px; margin: 0 auto 50px; }
         .problem-card {
-            background: #fff;
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-soft);
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-            border: none;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease;
+            background: #fff; padding: 25px 30px; border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft); display: flex; align-items: center; font-weight: bold;
+            position: relative; overflow: hidden;
         }
         .problem-card::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 4px; height: 100%;
-            background: var(--color-accent);
-        }
-        .problem-card:hover {
-             transform: translateX(5px);
+            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--color-accent);
         }
         .problem-card::before {
-            content: '';
-            display: inline-block;
-            width: 32px; height: 32px;
-            margin-right: 20px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%230056b3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
-            background-size: contain;
-            flex-shrink: 0;
-            background-color: var(--color-accent-light);
-            border-radius: 50%;
-            padding: 5px;
-        }
-        /* 解決ボックス（修正箇所） */
-        .solution-box {
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 900;
-            padding: 50px 40px;
-            /* 背景を青のグラデーションに変更 */
-            background: linear-gradient(135deg, var(--color-accent), var(--color-cta-bg-end));
-            /* 文字色を白に変更 */
-            color: #fff;
-            border-radius: var(--border-radius);
-            max-width: 950px;
-            margin: 0 auto;
-            /* 影を調整 */
-            box-shadow: 0 15px 40px rgba(0, 86, 179, 0.4);
-            letter-spacing: 0.05em;
-            position: relative;
-            overflow: hidden;
-        }
-        /* ボックス内の装飾 */
-        .solution-box::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
-            z-index: 0;
-            pointer-events: none;
-        }
-        .solution-box span {
-            position: relative;
-            z-index: 1;
+            content: ''; display: inline-block; width: 28px; height: 28px; margin-right: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23004085'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+            background-size: contain; flex-shrink: 0;
         }
 
+        .solution-box {
+            text-align: center; font-size: 1.4rem; font-weight: 900; padding: 50px 30px;
+            background: linear-gradient(135deg, var(--color-accent), #003366);
+            color: #fff; border-radius: var(--border-radius); max-width: 950px; margin: 0 auto;
+            box-shadow: 0 15px 40px rgba(0, 64, 133, 0.4); position: relative; overflow: hidden;
+        }
+        .solution-box::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%); pointer-events: none;
+        }
+        .solution-box span { position: relative; z-index: 1; display: block; line-height: 1.5; }
+        .solution-sub { font-size: 1rem; margin-top: 15px; opacity: 0.9; font-weight: normal; }
+
         /* Portfolio Section */
-        .portfolio-category { margin-bottom: 100px; }
+        .portfolio-category { margin-bottom: 80px; }
         .portfolio-category h3 {
-            font-size: 1.8rem;
-            text-align: center;
-            margin-bottom: 50px;
-            color: var(--color-text);
-            font-family: var(--font-en);
-            font-weight: 900;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            font-size: 1.6rem; text-align: center; margin-bottom: 40px;
+            font-family: var(--font-en); text-transform: uppercase; letter-spacing: 0.1em;
         }
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-        }
+        .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
         .portfolio-item {
-            background: #fff;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            border: none;
-            position: relative;
+            background: #fff; border-radius: var(--border-radius); overflow: hidden;
+            box-shadow: var(--shadow-soft); transition: all 0.4s ease;
         }
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-        .portfolio-img-wrap {
-            overflow: hidden;
-            position: relative;
-        }
-        .portfolio-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        .portfolio-item:hover img {
-            transform: scale(1.08);
-        }
-        .portfolio-caption {
-            padding: 25px;
-            font-size: 0.95rem;
-            color: var(--color-text-muted);
-            background: #fff;
-            position: relative;
-        }
-        .portfolio-caption strong {
-            display: block;
-            color: var(--color-text);
-            margin-bottom: 10px;
-            font-size: 1.15rem;
-            font-weight: 700;
-        }
-        .portfolio-caption::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 25px;
-            width: 30px; height: 3px;
-            background: var(--color-accent);
-            transition: width 0.3s ease;
-        }
-        .portfolio-item:hover .portfolio-caption::after {
-            width: 60px;
-        }
+        .portfolio-item:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+        .portfolio-item img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
+        .portfolio-item:hover img { transform: scale(1.05); }
+        .portfolio-caption { padding: 20px; font-size: 0.9rem; color: var(--color-text-muted); background: #fff; }
+        .portfolio-caption strong { display: block; color: var(--color-text); margin-bottom: 5px; font-size: 1.1rem; }
 
         /* Advantage Section */
         #advantage { background-color: var(--color-bg-secondary); }
-        .advantage-grid {
-            display: grid;
-            gap: 35px;
-        }
+        .advantage-grid { display: grid; gap: 30px; }
         .advantage-card {
-            background: #fff;
-            padding: 50px 35px 40px;
-            border-radius: var(--border-radius);
-            text-align: left;
-            box-shadow: var(--shadow-soft);
-            position: relative;
-            overflow: hidden;
-            border: none;
-            z-index: 1;
+            background: #fff; padding: 40px 30px; border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft); position: relative; overflow: hidden; z-index: 1;
         }
-        /* 背景の数字 */
         .advantage-num-bg {
-            position: absolute;
-            top: -30px; right: -20px;
-            font-family: var(--font-en);
-            font-size: 12rem;
-            font-weight: 900;
-            color: var(--color-accent);
-            opacity: 0.07;
-            line-height: 1;
-            z-index: -1;
+            position: absolute; top: -20px; right: -10px; font-family: var(--font-en);
+            font-size: 10rem; font-weight: 900; color: var(--color-accent); opacity: 0.05; line-height: 1; z-index: -1;
         }
-        
-        .advantage-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            color: var(--color-text);
-            display: flex;
-            align-items: center;
-        }
+        .advantage-card h3 { font-size: 1.4rem; margin-bottom: 20px; display: flex; align-items: center; }
         .advantage-card h3::before {
-             content: '';
-             display: block;
-             width: 6px; height: 24px;
-             background: var(--color-accent);
-             margin-right: 15px;
-             border-radius: 3px;
-        }
-        .advantage-card p {
-            color: var(--color-text-muted);
+             content: ''; width: 6px; height: 24px; background: var(--color-accent); margin-right: 15px; border-radius: 3px;
         }
 
         /* Price Section */
-        .price-table-wrap {
-            max-width: 950px;
-            margin: 0 auto;
-            background: #fff;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-soft);
-            overflow: hidden;
-            border: none;
+        .price-wrap { max-width: 900px; margin: 0 auto; }
+        .price-box {
+            background: #fff; border-radius: var(--border-radius); box-shadow: var(--shadow-soft);
+            padding: 40px; text-align: center; border: 2px solid #f0f0f0; margin-bottom: 30px;
         }
-        .price-table {
-            width: 100%;
-            border-collapse: collapse;
+        .price-box.recommend { border-color: var(--color-accent); position: relative; overflow: hidden; }
+        .price-box.recommend::before {
+            content: 'RECOMMENDED'; position: absolute; top: 12px; right: -30px;
+            background: var(--color-accent); color: #fff; padding: 5px 40px; font-size: 0.8rem;
+            transform: rotate(45deg); font-weight: bold;
         }
-        .price-table th, .price-table td {
-            padding: 25px;
-            text-align: center;
-            border-bottom: 1px solid #f0f0f0;
+        .price-title { font-size: 1.4rem; margin-bottom: 15px; color: var(--color-text); }
+        .price-amount { font-size: 2.8rem; font-weight: 900; color: var(--color-accent); font-family: var(--font-en); }
+        .price-unit { font-size: 1rem; color: var(--color-text-muted); font-weight: normal; }
+        .price-features { margin-top: 25px; list-style: none; text-align: left; display: inline-block; }
+        .price-features li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+        .price-features li::before {
+            content: '✔'; position: absolute; left: 0; color: var(--color-accent); font-weight: bold;
         }
-        .price-table th {
-            background: #fff;
-            color: var(--color-accent);
-            font-weight: 900;
-            padding: 35px 25px;
-            font-size: 1.2rem;
-            border-bottom: 3px solid var(--color-accent);
-            font-family: var(--font-en);
-        }
-        .price-table th:first-child {
-            text-align: left;
-            color: var(--color-text);
-            border-bottom: 3px solid #eee;
-        }
-        .price-highlight {
-            font-family: var(--font-en);
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--color-accent);
-            letter-spacing: -0.02em;
-        }
-        .price-note {
-            font-size: 0.8em;
-            color: #999;
-            display: block;
-            margin-top: 8px;
-            font-weight: normal;
-            font-family: var(--font-jp);
-        }
-        .text-bold { font-weight: 700; color: var(--color-text); }
 
         /* Flow Section */
         #flow { background-color: var(--color-bg-secondary); }
-        .flow-steps {
-            display: grid;
-            gap: 30px;
-            max-width: 950px;
-            margin: 0 auto;
-            counter-reset: flow-counter;
-            position: relative;
-        }
-        /* PCのみの接続線 */
-        @media (min-width: 768px) {
-            .flow-steps::before {
-                content: '';
-                position: absolute;
-                top: 50px;
-                left: 50px; right: 50px;
-                height: 3px;
-                background: #e0e0e0;
-                z-index: 0;
-            }
-        }
-
+        .flow-steps { display: grid; gap: 30px; max-width: 1000px; margin: 0 auto; counter-reset: flow-counter; }
         .flow-step {
-            background: #fff;
-            padding: 40px 30px 40px 100px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-soft);
-            position: relative;
-            border: none;
-            z-index: 1;
+            background: #fff; padding: 35px 30px 35px 90px; border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft); position: relative;
         }
         .flow-step::before {
-            counter-increment: flow-counter;
-            content: counter(flow-counter, decimal-leading-zero);
-            position: absolute;
-            left: 30px; top: 40px;
-            width: 50px; height: 50px;
-            background: var(--color-accent);
-            color: #fff;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-family: var(--font-en);
-            font-size: 1.4rem; font-weight: 900;
-            box-shadow: 0 5px 15px rgba(0, 86, 179, 0.4);
-            box-sizing: content-box;
-            border: 5px solid #fff;
-        }
-        .flow-step h3 {
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            color: var(--color-text);
-        }
-        .flow-step p {
-            color: var(--color-text-muted);
-            margin-bottom: 0;
+            counter-increment: flow-counter; content: counter(flow-counter, decimal-leading-zero);
+            position: absolute; left: 25px; top: 50%; transform: translateY(-50%);
+            width: 50px; height: 50px; background: var(--color-accent); color: #fff;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-en); font-size: 1.2rem; font-weight: 900;
         }
 
-        /* FAQ Section */
-        .faq-list {
-            max-width: 850px;
-            margin: 0 auto;
-            display: grid;
-            gap: 25px;
-        }
-        .faq-item {
-            background: #fff;
-            padding: 35px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-soft);
-            border: none;
-            transition: all 0.3s ease;
-        }
-        .faq-item:hover {
-             box-shadow: var(--shadow-hover);
-        }
-        .faq-q {
-            font-weight: bold;
-            margin-bottom: 20px;
-            font-size: 1.15rem;
-            display: flex;
-            align-items: center;
-            color: var(--color-text);
-        }
-        .faq-q-icon {
-            display: flex; align-items: center; justify-content: center;
-            width: 36px; height: 36px;
-            background: var(--color-accent);
-            color: #fff;
-            border-radius: 50%;
-            margin-right: 20px;
-            font-family: var(--font-en); font-weight: 900;
-            flex-shrink: 0;
-        }
-        .faq-a {
-            display: flex; color: var(--color-text); align-items: flex-start;
-            padding-left: 56px;
-            position: relative;
-        }
-        .faq-a::before {
-             content: 'A.';
-             position: absolute;
-             left: 15px; top: 0;
-             color: var(--color-text-muted);
-             font-weight: bold; font-family: var(--font-en);
-             opacity: 0.6;
-        }
+        /* FAQ */
+        .faq-list { max-width: 800px; margin: 0 auto; display: grid; gap: 20px; }
+        .faq-item { background: #fff; padding: 30px; border-radius: var(--border-radius); box-shadow: var(--shadow-soft); }
+        .faq-q { font-weight: bold; margin-bottom: 15px; color: var(--color-accent); display: flex; }
+        .faq-q::before { content: 'Q.'; margin-right: 10px; }
+        .faq-a { padding-left: 25px; }
 
-        /* Closing Section */
+        /* Closing Section (Fixed Centering) */
         #closing {
-            text-align: center;
             padding: 150px 20px;
-            /* リッチな多色グラデーション */
             background: linear-gradient(135deg, #004494, #0056b3, #00c6ff);
             color: #fff;
             position: relative;
             overflow: hidden;
+            text-align: center; /* Fallback */
         }
-        /* 背景エフェクト */
+        /* Ensure content inside closing section is vertically centered */
+        .closing-content {
+            position: relative; 
+            z-index: 1;
+            display: flex; /* Activate Flexbox */
+            flex-direction: column; /* Stack vertically */
+            align-items: center; /* Center horizontally */
+            justify-content: center; /* Center vertically if height is set */
+        }
+        
         #closing::before, #closing::after {
-            content: '';
-            position: absolute;
-            width: 600px; height: 600px;
-            border-radius: 50%;
-            background: radial-gradient(rgba(255,255,255,0.1), transparent 60%);
-            animation: float 15s infinite linear;
-            z-index: 0;
+            content: ''; position: absolute; width: 600px; height: 600px;
+            border-radius: 50%; background: radial-gradient(rgba(255,255,255,0.1), transparent 60%);
+            animation: float 15s infinite linear; z-index: 0;
         }
         #closing::before { top: -20%; left: -20%; }
         #closing::after { bottom: -30%; right: -10%; animation-delay: -7s; animation-duration: 20s; }
-
         @keyframes float {
             0% { transform: translate(0, 0) rotate(0deg); }
             50% { transform: translate(100px, 50px) rotate(180deg); }
             100% { transform: translate(0, 0) rotate(360deg); }
         }
 
-        .closing-content { position: relative; z-index: 1; }
-
         #closing h2 {
             color: #fff; font-size: 2.6rem; margin-bottom: 40px;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            display: block;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.2); display: block;
         }
-        #closing h2::after, #closing h2::before { display: none; }
-        
-        #closing p { font-size: 1.3rem; opacity: 0.9; font-weight: 500; margin-bottom: 40px;}
+        #closing h2::after { display: none; }
+        #closing p { font-size: 1.3rem; opacity: 0.9; font-weight: 500; margin-bottom: 40px; }
         
         .campaign-text {
-            color: var(--color-accent);
-            background: #fff;
-            font-weight: 900;
-            margin-bottom: 40px;
-            display: inline-block;
-            padding: 12px 35px;
-            border-radius: 50px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            font-size: 1.1rem;
+            color: var(--color-accent); background: #fff; font-weight: 900;
+            margin-bottom: 40px; display: inline-block; padding: 12px 35px;
+            border-radius: 50px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); font-size: 1.1rem;
         }
-        /* クロージングのボタン */
         #closing .btn-cta {
-            background: #fff;
-            color: var(--color-accent);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            background: #fff; color: var(--color-accent); box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
-        #closing .btn-cta::after { background: linear-gradient(to right, transparent, rgba(0, 86, 179, 0.1), transparent); }
-        #closing .btn-cta:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.3);
-        }
+        #closing .btn-cta::after { background: linear-gradient(to right, transparent, rgba(0, 64, 133, 0.1), transparent); }
+        #closing .btn-cta:hover { transform: translateY(-5px); box-shadow: 0 20px 45px rgba(0,0,0,0.3); }
 
         /* Footer */
-        #footer {
-            background: #222; /* ダークなフッター */
-            color: #999;
-            padding: 80px 20px;
-            text-align: center;
-        }
-        .footer-logo {
-            max-width: 180px;
-            margin-bottom: 30px;
-            opacity: 1;
-        }
-        .copyright {
-            font-size: 0.85rem;
-            font-family: var(--font-en);
-            opacity: 0.7;
-        }
+        #footer { background: #222; color: #999; padding: 80px 20px; text-align: center; }
+        .footer-logo { max-width: 180px; margin-bottom: 30px; filter: brightness(0) invert(1); opacity: 0.9; }
+        .copyright { font-size: 0.85rem; font-family: var(--font-en); opacity: 0.7; }
 
-        /* =========================================
-           Media Queries (PC Layout)
-        ========================================= */
+        /* Media Queries (PC) */
         @media (min-width: 768px) {
             .section { padding: var(--section-padding-pc); }
             .sp-only { display: none; }
             .pc-only { display: inline; }
             h2 { font-size: 3rem; margin-bottom: 80px; }
             
-            /* Hero Section PC調整 */
             #hero-section { padding-bottom: 100px; }
-            .hero-cta-wrapper { margin-top: 50px; }
-            .hero-badges { margin-top: 50px; }
+            .hero-content { margin-top: 60px; }
+            .hero-copy-main { font-size: 3.5rem; }
+            .hero-copy-sub { font-size: 1.4rem; }
 
-            .portfolio-grid, .advantage-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .portfolio-grid, .advantage-grid { grid-template-columns: repeat(3, 1fr); }
             .portfolio-grid.col-4 { grid-template-columns: repeat(4, 1fr); }
-
-            /* PCでのテーブル表示リセット */
-            .price-table thead { display: table-header-group; }
-            .price-table tr { display: table-row; margin-bottom: 0; box-shadow: none; border-radius: 0; border: none;}
-            .price-table th, .price-table td { display: table-cell; text-align: center; padding: 30px 25px; border-bottom: 1px solid #f0f0f0; }
-            .price-table td::before { content: none; }
-            .price-table tr:last-child td { border-bottom: none; }
-            .price-table th:first-child, .price-table td:first-child { text-align: left; padding-left: 40px; }
-
-            #flow .flow-steps {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 40px;
-                padding-top: 60px;
-            }
-            .flow-step {
-                padding: 90px 30px 40px;
-                text-align: center;
-            }
-            .flow-step::before {
-                left: 50%; top: 0;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        /* スマホでのテーブル縦積み表示 */
-        @media (max-width: 767px) {
-            .price-table thead { display: none; }
-            .price-table tr {
-                display: block;
-                margin-bottom: 30px;
-                box-shadow: var(--shadow-soft);
-                border-radius: var(--border-radius);
-                overflow: hidden;
-                background: #fff;
-            }
-            .price-table td {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                text-align: right;
-                padding: 20px 25px;
-                border-bottom: 1px solid #f0f0f0;
-            }
-            .price-table td:first-child {
-                background: var(--color-accent);
-                color: #fff;
-                font-weight: bold;
-                justify-content: center;
-                font-size: 1.1rem;
-            }
-            .price-table td:last-child { border-bottom: none; }
-            .price-table td::before {
-                content: attr(data-label);
-                font-weight: bold;
-                text-align: left;
-                color: var(--color-text-muted);
-                font-size: 0.9rem;
-            }
-            .price-highlight { font-size: 1.6rem; }
             
-            /* スマホ調整 */
-             h2 { font-size: 1.8rem; }
-             h2::after { width: 30px; height: 3px; }
-             
-             .solution-box { font-size: 1.2rem; padding: 30px 20px; }
-             
-             .advantage-card { padding: 40px 25px 30px; }
-             .advantage-num-bg { font-size: 8rem; top: -20px; right: -10px;}
+            .price-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+            .price-box { margin-bottom: 0; }
 
-            .flow-step { padding: 30px 25px 30px 80px; }
-            .flow-step::before { left: 20px; top: 35px; width: 44px; height: 44px; font-size: 1.2rem; border-width: 3px;}
+            .flow-steps { grid-template-columns: repeat(4, 1fr); gap: 30px; padding-top: 40px; }
+            .flow-step { padding: 80px 25px 30px; text-align: center; }
+            .flow-step::before { left: 50%; top: 0; transform: translate(-50%, -50%); border: 5px solid #fff; box-sizing: content-box; }
         }
     </style>
 </head>
@@ -790,31 +337,34 @@
 
     <header id="hero-section">
         <div class="hero-image-wrap fade-in-up">
-            <img src="image_12.png" alt="AI活用で実現する、圧倒的高品質・短納期デザイン。そのバナー、明日には納品できます。" class="hero-image">
+            <img src="image_12.png" alt="スタジオ撮影不要。AIで高品質な商品画像を翌日納品" class="hero-image">
         </div>
-        <div class="container fade-in-up">
+        <div class="container hero-content fade-in-up">
+            <h1 class="hero-copy-main">スタジオ撮影は、<br class="sp-only">もう不要。</h1>
+            <p class="hero-copy-sub">スマホ写真1枚あればいい。<br class="sp-only">AI×プロ技術で、最高品質の商品画像を翌日納品。</p>
+            
             <div class="hero-badges">
-                <div class="badge">1枚 10,000円～</div>
+                <div class="badge highlight">撮影費 0円</div>
+                <div class="badge">1枚 1万円〜</div>
                 <div class="badge">最短翌日納品</div>
-                <div class="badge">修正2回まで無料</div>
             </div>
-            <div class="hero-cta-wrapper">
-                <a href="https://forms.gle/gpgrBtM41eMRmQh89" class="btn-cta">今すぐ無料相談・お見積もり</a>
-            </div>
+
+            <a href="https://forms.gle/gpgrBtM41eMRmQh89" class="btn-cta">今すぐ無料相談・お見積もり</a>
         </div>
     </header>
 
     <section id="problem" class="section section-decoration">
         <div class="container">
-            <h2 class="fade-in-up">こんなお悩みありませんか？</h2>
+            <h2 class="fade-in-up">EC商品画像で<br class="sp-only">こんなお悩みありませんか？</h2>
             <div class="problem-card-list fade-in-up">
-                <div class="problem-card">急なキャンペーンで、バナーが今すぐ必要になった。</div>
-                <div class="problem-card">外注費を抑えたいが、安っぽいデザインにはしたくない。</div>
-                <div class="problem-card">デザイナーとのやり取りや、納品待ちの時間がストレス。</div>
-                <div class="problem-card">A/Bテスト用に、いろんなパターンの画像が欲しい。</div>
+                <div class="problem-card">スタジオ撮影の見積もりが高く、予算が合わない（1回10万円〜）。</div>
+                <div class="problem-card">カメラマンの手配やスタジオ予約で、納品まで2週間もかかる。</div>
+                <div class="problem-card">商品を梱包して発送するのが手間。返送も面倒。</div>
+                <div class="problem-card">売れるか分からない商品に、高額な撮影費をかけられない。</div>
             </div>
             <div class="solution-box fade-in-up">
-                <span>その悩み、私たちの「AIハイブリッド制作」が解決します。</span>
+                <span>その悩み、AI画像生成スタジオ<br>「AI-Product Studio」が解決します。</span>
+                <p class="solution-sub">あなたのスマホ写真を、AIが「売れる商業写真」にアップグレードします。</p>
             </div>
         </div>
     </section>
@@ -822,110 +372,64 @@
     <section id="portfolio" class="section">
         <div class="container">
             <h2 class="fade-in-up">制作実績</h2>
+            <p class="text-center fade-in-up" style="margin-bottom: 50px;">あらゆる商品を、最適なシチュエーションへ。</p>
 
             <div class="portfolio-category fade-in-up">
-                <h3>Food & EC</h3>
+                <h3>Food & Sweets</h3>
                 <div class="portfolio-grid col-4">
                     <div class="portfolio-item">
-                        <div class="portfolio-img-wrap">
-                            <img src="image_4.png" alt="高級アイスクリーム">
-                        </div>
+                        <img src="image_4.png" alt="高級アイスクリーム">
                         <div class="portfolio-caption">
-                            <strong>高級スイーツLPメイン</strong>
-                            「シズル感」と「高級感」で価格以上の価値を演出。
+                            <strong>高級感のあるテーブル合成</strong>
+                            シンプルな商品写真を、ホテルのような高級空間へ。
                         </div>
                     </div>
                     <div class="portfolio-item">
-                        <div class="portfolio-img-wrap">
-                            <img src="image_8.png" alt="抹茶カヌレ商品PR">
-                        </div>
+                        <img src="image_8.png" alt="抹茶カヌレ">
                         <div class="portfolio-caption">
-                            <strong>ランキング1位商品PR</strong>
-                            権威性アイコンと断面で「濃厚さ」を強調。
+                            <strong>シズル感の演出</strong>
+                            照明と質感をAIで調整し、美味しさを最大化。
                         </div>
                     </div>
                     <div class="portfolio-item">
-                        <div class="portfolio-img-wrap">
-                            <img src="image_6.png" alt="東北ぷりんセット">
-                        </div>
+                        <img src="image_6.png" alt="プリンセット">
                         <div class="portfolio-caption">
-                            <strong>お取り寄せグルメまとめ</strong>
-                            バリエーションと販売実績をひと目で伝達。
+                            <strong>ギフトセットの集合写真</strong>
+                            個別の写真を違和感なく組み合わせ、豪華なセットへ。
                         </div>
                     </div>
                     <div class="portfolio-item">
-                        <div class="portfolio-img-wrap">
-                            <img src="image_5.png" alt="自炊サポート宅食">
-                        </div>
+                        <img src="image_5.png" alt="宅食イメージ">
                         <div class="portfolio-caption">
-                            <strong>宅食サービス利用イメージ</strong>
-                            湯気や柔らかい光でターゲットへの共感を誘う。
+                            <strong>ライフスタイル背景</strong>
+                            「食卓のある暮らし」を生成し、利用シーンを想起。
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="portfolio-category fade-in-up">
-                <h3>Beauty & Lifestyle</h3>
+                <h3>Beauty & Health</h3>
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
-                        <div class="portfolio-img-wrap">
-                            <img src="image_3.png" alt="フィットネスジム広告">
-                        </div>
+                        <img src="image_7.png" alt="健康茶">
                         <div class="portfolio-caption">
-                            <strong>パーソナルジム広告</strong>
-                            スタイリッシュな写真とタイポで意欲を刺激。
+                            <strong>自然光とグリーンの演出</strong>
+                            屋外ロケのような爽やかな背景を、スタジオなしで実現。
                         </div>
                     </div>
                     <div class="portfolio-item">
-                        <div class="portfolio-img-wrap">
-                            <img src="image_0.png" alt="脱毛サロンキャンペーン">
-                        </div>
+                        <img src="image_0.png" alt="美容イメージ">
                         <div class="portfolio-caption">
-                            <strong>美容サロンキャンペーン</strong>
-                            「今だけ50円」等の強力なオファーを目立たせる。
+                            <strong>モデル合成（イメージ）</strong>
+                            商品イメージに合う人物モデルをAIで生成・合成。
                         </div>
                     </div>
                     <div class="portfolio-item">
-                        <div class="portfolio-img-wrap">
-                            <img src="image_7.png" alt="健康茶イメージ">
-                        </div>
+                        <img src="image_3.png" alt="フィットネス">
                         <div class="portfolio-caption">
-                            <strong>健康食品・飲料イメージ</strong>
-                            爽やかなグリーンで「体に優しい」世界観を構築。
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="portfolio-category fade-in-up">
-                <h3>Business & Service</h3>
-                <div class="portfolio-grid">
-                    <div class="portfolio-item">
-                        <div class="portfolio-img-wrap">
-                            <img src="image_9.png" alt="適職診断アイキャッチ">
-                        </div>
-                        <div class="portfolio-caption">
-                            <strong>診断コンテンツアイキャッチ</strong>
-                            イラストを使用し、硬いテーマを親しみやすく。
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-img-wrap">
-                            <img src="image_2.png" alt="SNSブランディング講座">
-                        </div>
-                        <div class="portfolio-caption">
-                            <strong>セミナー集客バナー</strong>
-                            ゴールド×黒で「プロフェッショナル」な印象を。
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-img-wrap">
-                            <img src="image_1.png" alt="タスク管理ツール広告">
-                        </div>
-                        <div class="portfolio-caption">
-                            <strong>SaaSツール獲得広告</strong>
-                            強調文字で視認性とインパクトを最大化。
+                            <strong>ジム・スポーツシーン</strong>
+                            撮影許可の取りにくいジム背景もAIなら一瞬で生成。
                         </div>
                     </div>
                 </div>
@@ -936,22 +440,21 @@
     <section id="advantage" class="section section-decoration alt">
         <div class="container">
             <h2 class="fade-in-up">選ばれる3つの理由</h2>
-            <p class="text-center fade-in-up" style="margin-bottom: 60px; font-size: 1.1rem;">なぜ「安くて早い」のに「高品質」なのか？</p>
             <div class="advantage-grid fade-in-up">
                 <div class="advantage-card">
                     <span class="advantage-num-bg">01</span>
-                    <h3>AIによる<br>超高速ドラフト生成</h3>
-                    <p>最新AIがベースを一瞬で作成。ゼロから作る時間を90%カットし、「最短翌日納品」を実現。</p>
+                    <h3>撮影費・スタジオ代<br>すべて０円</h3>
+                    <p>必要なのは商品画像データだけ。カメラマンもスタジオも不要なため、従来の制作費の約1/10のコストダウンを実現します。</p>
                 </div>
                 <div class="advantage-card">
                     <span class="advantage-num-bg">02</span>
-                    <h3>人力による<br>丁寧な調整</h3>
-                    <p>AIが苦手な文字レイアウトや細部を専門スタッフが調整。違和感のない、商用利用レベルのデザインに仕上げます。</p>
+                    <h3>商品発送の手間なし<br>最短翌日納品</h3>
+                    <p>商品を郵送する必要はありません。スマホで撮った写真を送るだけで、翌日にはプロ品質の画像が仕上がります。</p>
                 </div>
                 <div class="advantage-card">
                     <span class="advantage-num-bg">03</span>
-                    <h3>業界最安クラスの<br>料金体系</h3>
-                    <p>工程の自動化で人件費を圧縮。1枚10,000円～という圧倒的なコストパフォーマンスを実現。</p>
+                    <h3>無限のロケーション<br>撮り直し放題</h3>
+                    <p>「海辺」「高級ラウンジ」「雪山」など、物理的に撮影困難な場所もAIなら自由自在。天候にも左右されません。</p>
                 </div>
             </div>
         </div>
@@ -960,63 +463,59 @@
     <section id="price" class="section">
         <div class="container">
             <h2 class="fade-in-up">料金プラン</h2>
-            <div class="price-table-wrap fade-in-up">
-                <table class="price-table">
-                    <thead>
-                        <tr>
-                            <th>PLAN</th>
-                            <th>スタンダード（1枚）</th>
-                            <th>ボリュームパック（5枚）</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="プラン" class="text-bold">価格</td>
-                            <td data-label="スタンダード（1枚）"><span class="price-highlight">10,000円</span></td>
-                            <td data-label="ボリュームパック（5枚）"><span class="price-highlight">45,000円</span><span class="price-note">(1枚あたり9,000円)</span></td>
-                        </tr>
-                        <tr>
-                            <td data-label="プラン" class="text-bold">納期</td>
-                            <td data-label="スタンダード（1枚）">翌日～2営業日</td>
-                            <td data-label="ボリュームパック（5枚）">3営業日～</td>
-                        </tr>
-                        <tr>
-                            <td data-label="プラン" class="text-bold">修正</td>
-                            <td data-label="スタンダード（1枚）">2回まで無料</td>
-                            <td data-label="ボリュームパック（5枚）">各2回まで無料</td>
-                        </tr>
-                        <tr>
-                            <td data-label="プラン" class="text-bold">用途例</td>
-                            <td data-label="スタンダード（1枚）">SNS広告、バナー</td>
-                            <td data-label="ボリュームパック（5枚）">A/Bテスト、複数展開</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="price-wrap fade-in-up">
+                <div class="price-container">
+                    <div class="price-box">
+                        <h3 class="price-title">スタンダード撮影（合成）</h3>
+                        <div class="price-amount">10,000<span class="price-unit">円(税別) / 1枚</span></div>
+                        <ul class="price-features">
+                            <li>スマホ写真からの高画質化</li>
+                            <li>AI背景生成・合成</li>
+                            <li>光と影のプロ補正</li>
+                            <li>修正2回まで無料</li>
+                            <li>納期：翌日〜2営業日</li>
+                        </ul>
+                    </div>
+                    <div class="price-box recommend">
+                        <h3 class="price-title">バリエーションパック</h3>
+                        <div class="price-amount">45,000<span class="price-unit">円(税別) / 5枚</span></div>
+                        <ul class="price-features">
+                            <li><strong>1枚あたり9,000円(税別)</strong></li>
+                            <li>Amazon/楽天などのサブ画像に最適</li>
+                            <li>5パターンの異なる背景を作成</li>
+                            <li>ABテストにも推奨</li>
+                            <li>納期：3営業日〜</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <p class="text-center fade-in-up" style="margin-top: 40px; font-size: 0.9rem; color: var(--color-text-muted);">※複雑な合成やイラスト描き起こしが必要な場合は別途オプションとなります。<br>※月額定額プランもございます。お問い合わせください。</p>
+            <p class="text-center fade-in-up" style="margin-top: 40px; font-size: 0.9rem; color: var(--color-text-muted);">
+                ※元画像の画質があまりに低い場合、お断りする場合がございます。<br>
+                ※複雑な透過処理が必要な商品は別途オプションとなる場合があります。
+            </p>
         </div>
     </section>
 
     <section id="flow" class="section section-decoration">
         <div class="container">
             <h2 class="fade-in-up">納品までの流れ</h2>
-            <p class="text-center fade-in-up" style="margin-bottom: 60px; font-size: 1.1rem;">面倒な打ち合わせは不要です。</p>
+            <p class="text-center fade-in-up" style="margin-bottom: 60px;">商品は手元に置いたままでOK。</p>
             <div class="flow-steps fade-in-up">
                 <div class="flow-step">
-                    <h3>オーダーフォーム入力</h3>
-                    <p>サイズ、テキスト、イメージ（参考画像があれば）を送るだけ。</p>
+                    <h3>写真送付・オーダー</h3>
+                    <p>スマホ等で撮影した商品写真と、背景のイメージ（「朝の食卓」「高級感」など）をお送りください。</p>
                 </div>
                 <div class="flow-step">
-                    <h3>AIを活用した制作・調整</h3>
-                    <p>最短数時間で初稿をご提出します。</p>
+                    <h3>AI生成 × プロ編集</h3>
+                    <p>AIが数パターンの背景を生成し、プロが商品の光や影を馴染ませて合成します。</p>
                 </div>
                 <div class="flow-step">
                     <h3>確認・修正</h3>
-                    <p>気になる点があればチャットで修正依頼。</p>
+                    <p>仕上がりを確認いただき、気になるところがあれば修正対応いたします。</p>
                 </div>
                 <div class="flow-step">
                     <h3>納品</h3>
-                    <p>jpg/png形式で納品完了。</p>
+                    <p>高解像度のjpg/pngデータで納品。すぐにECサイトやSNSで使用可能です。</p>
                 </div>
             </div>
         </div>
@@ -1027,16 +526,16 @@
             <h2 class="fade-in-up">よくある質問</h2>
             <div class="faq-list fade-in-up">
                 <div class="faq-item">
-                    <p class="faq-q"><span class="faq-q-icon">Q</span>AIで作った画像に著作権の問題はありませんか？</p>
-                    <p class="faq-a">商用利用可能な有料AIモデルを使用し、必要な加筆修正・調整を行うため、安心してご使用いただけます。</p>
+                    <p class="faq-q">スマホで撮った写真でも大丈夫ですか？</p>
+                    <p class="faq-a">はい、最近のスマホであれば問題ありません。ただし、ピントが合っていない、極端に暗い写真は仕上がりに影響するため、明るい場所での撮影を推奨しています。</p>
                 </div>
                 <div class="faq-item">
-                    <p class="faq-q"><span class="faq-q-icon">Q</span>まったくイメージが湧いていないのですが…</p>
-                    <p class="faq-a">お任せください。AIが複数のパターンを提案できるため、そこから選んでブラッシュアップすることも可能です。</p>
+                    <p class="faq-q">Amazonや楽天の商品画像規定に対応していますか？</p>
+                    <p class="faq-a">はい、対応可能です。白抜き画像（メイン画像）の作成も承っておりますので、ご相談ください。</p>
                 </div>
                 <div class="faq-item">
-                    <p class="faq-q"><span class="faq-q-icon">Q</span>LP（ランディングページ）全体も作れますか？</p>
-                    <p class="faq-a">はい、ヘッダー画像だけでなく、構成案からの全体制作も承っております（別途お見積り）。</p>
+                    <p class="faq-q">商品を送って撮影してもらうことはできますか？</p>
+                    <p class="faq-a">基本的には「商品送付不要」の合成サービスですが、どうしても商品の質感撮影が必要な場合は、提携カメラマンによる撮影もオプションで承ります。</p>
                 </div>
             </div>
         </div>
@@ -1044,50 +543,36 @@
 
     <section id="closing">
         <div class="closing-content container fade-in-up">
-            <h2>ビジネスのスピードを落とさない、<br>新時代のデザインパートナー。</h2>
-            <p>まずは1枚、そのクオリティとスピードを体験してください。</p>
-            <div class="campaign-text">初回限定お試しキャンペーン中！</div><br>
+            <h2>その商品画像、<br>もっと安く、もっと魅力的に。</h2>
+            <p>スタジオ撮影のコストと手間をゼロに。<br>まずは1枚、そのクオリティを体験してください。</p>
+            <div class="campaign-text">初回限定お試しキャンペーン中！</div>
             <a href="https://forms.gle/gpgrBtM41eMRmQh89" class="btn-cta">無料見積もり・相談をする</a>
         </div>
     </section>
 
     <footer id="footer">
         <div class="container">
-            <img src="image_14.png" alt="いわきユナイト株式会社" class="footer-logo">
+            <img src="image_13.png" alt="いわきユナイト株式会社" class="footer-logo">
             <p class="copyright en-title">© Iwaki Unite Co., Ltd. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // スクロール連動フェードインアニメーション
+        // Scroll Animation
         document.addEventListener("DOMContentLoaded", function() {
             const targets = document.querySelectorAll('.fade-in-up');
-            
-            const options = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.2
-            };
-
+            const options = { root: null, rootMargin: '0px', threshold: 0.2 };
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.classList.add('is-visible');
-                        }, index * 100); 
+                        setTimeout(() => { entry.target.classList.add('is-visible'); }, index * 100); 
                         observer.unobserve(entry.target);
                     }
                 });
             }, options);
-
-            targets.forEach(target => {
-                observer.observe(target);
-            });
+            targets.forEach(target => { observer.observe(target); });
         });
     </script>
-
-</body>
-</html>
 
 </body>
 </html>
